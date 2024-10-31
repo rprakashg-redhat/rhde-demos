@@ -1,0 +1,41 @@
+---
+builder_blueprint_name: rhde
+builder_compose_type: edge-commit
+builder_compose_pkgs:
+  - libreswan
+  - firewalld
+  - podman
+  - vim-enhanced
+  - NetworkManager-wifi
+  - "fuse-overlayfs"
+  - "setroubleshoot-server"
+  - "slirp4netns"
+  - "net-tools"
+  - cockpit
+  - cockpit-machines
+  - cockpit-podman
+  - cockpit-system
+  - cockpit-bridge
+  - cockpit-pcp
+  - cockpit-storaged
+  - cockpit-session-recording
+  - libvirt-daemon-config-network
+  - libvirt-daemon-kvm
+  - qemu-kvm
+  - qemu-img
+  - virt-install
+  - libguestfs-tools
+  - python3-libguestfs
+  - virt-top
+  - git
+  - tcpdump
+builder_compose_customizations:
+  user:
+    name: "{{ admin_user }}"
+    description: "Admin user"
+    password: "{{ admin_password }}"
+    groups: ["users", "wheel"]
+  services:
+    enabled: ["microshift", "cockpit.socket"]
+  firewall:
+    ports: ["22:tcp", "80:tcp", "443:tcp", "6443:tcp", "5353:udp", "30000-32767:tcp", "30000-32767:udp", "9090:tcp"]

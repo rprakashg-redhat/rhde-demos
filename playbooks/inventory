@@ -1,0 +1,7 @@
+---
+all:
+  hosts:
+    imagebuilder:
+      ansible_host: "ec2-44-243-250-213.us-west-2.compute.amazonaws.com"
+      ansible_port: 22
+      ansible_user: "admin"

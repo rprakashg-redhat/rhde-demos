@@ -1,0 +1,12 @@
+---
+- name: setup imagebuilder playbook
+  hosts: localhost
+  tasks:
+  - name: include ansible vault secrets with rhuser and rhpassword
+    include_vars:
+      file: "./vars/secrets.yml"
+  - name: setup imagebuilder
+    ansible.builtin.include_role:
+      name: rprakashg.demos.setup_imagebuilder
+    vars:
+      create_infra: true

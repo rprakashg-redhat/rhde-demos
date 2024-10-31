@@ -1,0 +1,13 @@
+---
+- name: Build ISO
+  hosts: imagebuilder
+  tasks:
+  - name: load secrets from ansible vault
+    include_vars:
+      file: "./vars/secrets.yml"
+  - name: Build iso
+    ansible.builtin.include_role:
+      name: rprakashg.demos.build_iso
+    vars:
+      blueprint_name: "rhde"
+      kickstart_file: "/Users/rgopinat/github.com/rprakashg-redhat/rhde-demos/kickstart.ks"
