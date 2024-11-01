@@ -1,5 +1,8 @@
 ---
 builder_blueprint_name: rhde
+builder_blueprint_distro: "rhel-94"
+builder_request_timeout: 600
+builder_wait_compose_timeout: 2400
 builder_compose_type: edge-commit
 builder_compose_pkgs:
   - libreswan
@@ -36,6 +39,6 @@ builder_compose_customizations:
     password: "{{ admin_password }}"
     groups: ["users", "wheel"]
   services:
-    enabled: ["microshift", "cockpit.socket"]
+    enabled: ["cockpit.socket"]
   firewall:
-    ports: ["22:tcp", "80:tcp", "443:tcp", "6443:tcp", "5353:udp", "30000-32767:tcp", "30000-32767:udp", "9090:tcp"]
+    ports: ["22:tcp", "80:tcp", "443:tcp", "5353:udp", "30000-32767:tcp", "30000-32767:udp", "9090:tcp"]

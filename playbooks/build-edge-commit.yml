@@ -1,9 +1,9 @@
 ---
-- name: build edge commit 
+- name: Build edge commit
   hosts: imagebuilder
-  become: yes
+  become: true
   vars_files:
-  - "../vars/secrets.yml"
-  - "../vars/rhde-definition.yml"
+    - "../vars/secrets.yml"
+    - "../vars/build.yml"
   roles:
-    - infra.osbuild.builder  
+    - rprakashg.demos.build_edge_commit
